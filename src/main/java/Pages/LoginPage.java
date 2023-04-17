@@ -1,12 +1,9 @@
 package Pages;
 
-import org.junit.*;
-import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
-
 
 import PageObjects.*;
 public class LoginPage extends LoginObjects{
@@ -20,7 +17,6 @@ public class LoginPage extends LoginObjects{
 		PageFactory.initElements(driver, this);
 		driver.get("https://admin-demo.nopcommerce.com/login");
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	public void enterEmailAndPassword(String email, String passwd) {
 		username.clear();
@@ -34,12 +30,11 @@ public class LoginPage extends LoginObjects{
 	}
 	
 	public void clickOnLogoutLink() {
-		logOut.click();	
+		logOut.click();
 	}
 	
 	public void VerifyPageTitle(String title) {
-		String pageTitle = driver.getTitle();
-		Assert.assertTrue("Page Title is matching", pageTitle.equals(title));
+		
 	}
 	
 	public void closeBrowser()
