@@ -8,8 +8,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
 
 import PageObjects.*;
+import Utilities.BrowserActions;
 public class LoginPage extends LoginObjects{
 	public WebDriver driver;
+	BrowserActions action = new BrowserActions();
 	public void launchApplication()
 	{
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\test\\resources\\drivers\\chromedriver.exe");
@@ -33,10 +35,12 @@ public class LoginPage extends LoginObjects{
 	}
 	
 	public void clickOnLogoutLink() {
+		action.waitForElementToBeVisible(driver,logOut);
 		logOut.click();
 	}
 	
 	public void VerifyPageTitle(String title) {
+		action.waitForDocumentReadyState(driver);
 		String pageTitle = driver.getTitle();
 		Assert.assertTrue("Page Title is matching", pageTitle.equals(title));
 	}
