@@ -21,4 +21,13 @@ public class LoginObjects {
 	@FindBy(xpath = "//*[@id='navbarText']//*[@href='/logout']")
 	@CacheLookup
 	public WebElement logOut;
+	
+	@FindBy(xpath = "//*[@class='message-error validation-summary-errors']/ul")
+	@CacheLookup
+	public WebElement loginAccError;
+	
+	@FindBy(xpath = "//*[@id='Email-error']")
+	@CacheLookup
+	public WebElement emailFieldError;
+	
 }

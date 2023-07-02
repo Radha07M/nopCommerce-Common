@@ -58,4 +58,22 @@ public class LoginPage extends LoginObjects{
 	{
 		driver.close();
 	}
+	
+	public void enterMailAddress(String mailId) {
+		username.clear();
+		username.sendKeys(mailId);
+	}
+	
+	public void enterPassword(String passwd) {
+		password.clear();
+		password.sendKeys(passwd);
+	}
+	
+	public void verifyFieldsErrorMsgOnLogin(String errorMsg) {
+		Assert.assertEquals("Successfully verified Field Error Message ", errorMsg, emailFieldError.getText());
+	}
+	
+	public void verifySummaryErrorMsgOnLogin(String errorMsg) {
+		Assert.assertEquals("Successfully verified summary Error Message ", errorMsg, loginAccError.getText());
+	}
 }
