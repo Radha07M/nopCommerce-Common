@@ -18,7 +18,7 @@ public class LoginObjects {
 	@CacheLookup
 	public WebElement loginButton;
 	
-	@FindBy(xpath = "//a[@class='nav-link' and text()='Logout']")
+	@FindBy(xpath = "//*[@id='navbarText']//*[@href='/logout']")
 	@CacheLookup
 	public WebElement logOut;
 }

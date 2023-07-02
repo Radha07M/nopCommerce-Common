@@ -1,9 +1,9 @@
 package Utilities;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -20,9 +20,7 @@ public class BrowserActions {
 		}
 	}
 	
-	public boolean waitForDocumentReadyState(WebDriver driver) {
-		boolean flag=false;
-		((JavascriptExecutor)driver).executeScript("document.");
-		return flag;
+	public void waitForDocumentReadyState(WebDriver driver) {
+		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 	}
 }

@@ -2,6 +2,8 @@ package Pages;
 
 import org.junit.*;
 import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -9,17 +11,18 @@ import org.openqa.selenium.support.PageFactory;
 
 import PageObjects.*;
 import Utilities.BrowserActions;
+import Utilities.Constant;
 public class LoginPage extends LoginObjects{
 	public WebDriver driver;
 	BrowserActions action = new BrowserActions();
 	public void launchApplication()
 	{
-		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\test\\resources\\drivers\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+Constant.DRIVERPATH);
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--remote-allow-origins=*");
 		driver = new ChromeDriver(options);
 		PageFactory.initElements(driver, this);
-		driver.get("https://admin-demo.nopcommerce.com/login");
+		driver.get(Constant.APPURL);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
@@ -41,6 +44,12 @@ public class LoginPage extends LoginObjects{
 	
 	public void VerifyPageTitle(String title) {
 		action.waitForDocumentReadyState(driver);
+		try {
+			Thread.sleep(10);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String pageTitle = driver.getTitle();
 		Assert.assertTrue("Page Title is matching", pageTitle.equals(title));
 	}
