@@ -70,10 +70,12 @@ public class LoginPage extends LoginObjects{
 	}
 	
 	public void verifyFieldsErrorMsgOnLogin(String errorMsg) {
+		action.waitForElementToBeVisible(driver, loginAccError);
 		Assert.assertEquals("Successfully verified Field Error Message ", errorMsg, emailFieldError.getText());
 	}
 	
 	public void verifySummaryErrorMsgOnLogin(String errorMsg) {
+		action.waitForElementToBeVisible(driver, loginAccError);
 		Assert.assertEquals("Successfully verified summary Error Message ", errorMsg, loginAccError.getText());
 	}
 }
