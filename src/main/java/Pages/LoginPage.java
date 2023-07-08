@@ -3,18 +3,17 @@ package Pages;
 import org.junit.*;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
 
 import PageObjects.*;
-import Utilities.BrowserActions;
-import Utilities.Constant;
+import Utilities.*;
 public class LoginPage extends LoginObjects{
 	public WebDriver driver;
 	BrowserActions action = new BrowserActions();
+	Config config = new Config();
 	public void launchApplication()
 	{
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+Constant.DRIVERPATH);
@@ -25,6 +24,7 @@ public class LoginPage extends LoginObjects{
 		driver.get(Constant.APPURL);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		config.setDriver(driver);
 	}
 	public void enterEmailAndPassword(String email, String passwd) {
 		username.clear();
@@ -38,12 +38,12 @@ public class LoginPage extends LoginObjects{
 	}
 	
 	public void clickOnLogoutLink() {
-		action.waitForElementToBeVisible(driver,logOut);
+		action.waitForElementToBeVisible(logOut);
 		logOut.click();
 	}
 	
 	public void VerifyPageTitle(String title) {
-		action.waitForDocumentReadyState(driver);
+		action.waitForDocumentReadyState();
 		try {
 			Thread.sleep(10);
 		} catch (InterruptedException e) {
@@ -70,12 +70,12 @@ public class LoginPage extends LoginObjects{
 	}
 	
 	public void verifyFieldsErrorMsgOnLogin(String errorMsg) {
-		action.waitForElementToBeVisible(driver, loginAccError);
+		action.waitForElementToBeVisible(loginAccError);
 		Assert.assertEquals("Successfully verified Field Error Message ", errorMsg, emailFieldError.getText());
 	}
 	
 	public void verifySummaryErrorMsgOnLogin(String errorMsg) {
-		action.waitForElementToBeVisible(driver, loginAccError);
+		action.waitForElementToBeVisible(loginAccError);
 		Assert.assertEquals("Successfully verified summary Error Message ", errorMsg, loginAccError.getText());
 	}
 }

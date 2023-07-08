@@ -10,8 +10,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BrowserActions {
-	public void waitForElementToBeVisible(WebDriver driver,WebElement element) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	Config config = new Config();
+	public void waitForElementToBeVisible(WebElement element) {
+		WebDriverWait wait = new WebDriverWait(config.getDriver(), Duration.ofSeconds(10));
 		try {
 			wait.until(ExpectedConditions.presenceOfElementLocated((By) element));
 		}
@@ -20,7 +21,7 @@ public class BrowserActions {
 		}
 	}
 	
-	public void waitForDocumentReadyState(WebDriver driver) {
-		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+	public void waitForDocumentReadyState() {
+		config.getDriver().manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 	}
 }
