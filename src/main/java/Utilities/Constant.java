@@ -1,5 +1,9 @@
 package Utilities;
-
+/*
+ * Here we have achieved Abstraction and interface concept of OOPs
+ * Abstraction in Java is achieved using either an abstract class or an Interface.
+ * An Interface in java represents the blueprint of a class and it contains abstract mehtod and final static variables
+ */
 public interface Constant {
 	String APPURL = "https://admin-demo.nopcommerce.com/login";
 	String DRIVERPATH = "\\src\\test\\resources\\drivers\\chromedriver.exe";

@@ -1,5 +1,10 @@
 package Utilities;
 
+/*
+ * Here we have achieved POJO class concept
+ * POJO stands for Plain Old Java Object
+ * POJO is used for increase the reusability of code and readability
+ */
 import org.openqa.selenium.WebDriver;
 public class Config {
 	
